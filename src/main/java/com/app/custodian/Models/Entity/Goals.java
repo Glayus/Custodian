@@ -1,4 +1,5 @@
-package Models.Entity;
+package com.app.custodian.Models.Entity;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +25,9 @@ public class Goals {
     private LocalTime beginTime;
     @Column(nullable = false)
     private LocalTime endTime;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private User user;
 
 
 

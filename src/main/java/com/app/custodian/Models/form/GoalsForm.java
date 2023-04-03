@@ -1,6 +1,6 @@
-package Models.form;
+package com.app.custodian.Models.form;
 
-import Models.Entity.Goals;
+import com.app.custodian.Models.Entity.Goals;
 import com.app.custodian.validation.Constraints.MinFuture;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -22,11 +22,11 @@ public class GoalsForm {
 
     public Goals toEntity(){
         Goals goal = new Goals();
-        Goals.setName(name);
-        Goals.setAccomplished(accomplished);
-        Goals.setDate(date);
-        Goals.setBeginTime(beginTime);
-        Goals.setEndTime(endTime);
+        goal.setName(name);
+        goal.setAccomplished(accomplished);
+        goal.setDate(date);
+        goal.setBeginTime(beginTime);
+        goal.setEndTime(endTime);
         return goal;
     }
 

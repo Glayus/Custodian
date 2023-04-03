@@ -1,10 +1,13 @@
 package com.app.custodian.Service.impl;
-import java.util.List;
-import Models.DTO.GoalsDTO;
+
+import com.app.custodian.Models.DTO.GoalsDTO;
+import com.app.custodian.Models.Entity.Goals;
+import com.app.custodian.Models.form.GoalsForm;
 import com.app.custodian.Repository.GoalsRepository;
 import com.app.custodian.Service.GoalsService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class GoalsServiceImpl implements GoalsService {
@@ -16,9 +19,30 @@ public GoalsServiceImpl (GoalsRepository goalsRepository) {this.goalsRepository=
 
     @Override
     public List<GoalsDTO> getAll() {
-        return GoalsRepository.findAll()
+        return goalsRepository.findAll()
                 .stream()
                 .map(GoalsDTO::from)
                 .toList();
     }
+
+    @Override
+    public GoalsDTO getCurrent(String username) {
+        return goalsRepository.findByUser_LoginAndDate(username,LocalDate.now())
+                .map( GoalsDTO::from )
+                .orElse(null);
+    }
+
+    @Override
+    public void create(GoalsForm form) {
+        Goals goal = new Goals();
+
+        goal.setName(form.getName());
+        goal.setDate(form.getDate());
+        goal.setBeginTime(form.getBeginTime());
+        goal.setEndTime(form.getEndTime());
+
+        goalsRepository.save(goal);
+    }
+
+
 }
