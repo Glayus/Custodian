@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface GoalsService {
 
-    List<GoalsDTO> getAll();
+    List<GoalsDTO> getAll(String login);
     GoalsDTO getCurrent(String login);
 
-    void create (GoalsForm goalsForm);
+    void create (GoalsForm goalsForm, String login);
 }

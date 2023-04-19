@@ -1,6 +1,7 @@
 package com.app.custodian.Service.impl;
 
 import com.app.custodian.Models.DTO.AuthDTO;
+import com.app.custodian.Models.Entity.Role;
 import com.app.custodian.Models.Entity.User;
 import com.app.custodian.Models.form.LoginForm;
 import com.app.custodian.Models.form.UserForm;
@@ -53,6 +54,7 @@ public class AuthServiceImpl implements AuthService {
     public AuthDTO register(UserForm form) {
         User user;
         user = form.toEntity();
+        user.setRole(Role.PROCRASTINATOR);
         user.setPassword( passwordEncoder.encode(form.getPassword()) );
         user = userRepository.save( user );
 

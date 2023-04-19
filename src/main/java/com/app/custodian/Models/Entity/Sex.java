@@ -4,5 +4,6 @@ public enum Sex {
     MALE,
     FEMALE,
     AmoeboidZingatularian    ,
-    OTHER
+    OTHER,
+    NOT_YOUR_BUSINESS
 }

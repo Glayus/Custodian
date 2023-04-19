@@ -4,6 +4,6 @@ public enum Role {
 
     ADMIN,
     UNIDENTIFIED,
-    PROCRASTINATOR
+    PROCRASTINATOR,
 
 }

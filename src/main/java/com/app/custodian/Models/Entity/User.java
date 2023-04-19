@@ -28,10 +28,10 @@ public class User implements UserDetails {
     private String eMail;
     @Column(nullable = false)
     private String password;
-
+    @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private Role role;
-
+    @Enumerated(EnumType.STRING)
     @Column(name = "sex")
     private Sex sex;
 
@@ -41,6 +41,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private Set<Goals> goals = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "user")
+    private Set<StuffRequired> stuffRequired = new LinkedHashSet<>();
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_"+role));
